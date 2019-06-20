@@ -33,7 +33,7 @@ pub struct HeaderName {
     inner: Repr<Custom>,
 }
 
-// Almost a full `HeaderName`
+/// Almost a full `HeaderName`
 #[derive(Debug, Hash)]
 pub struct HdrName<'a> {
     inner: Repr<MaybeLower<'a>>,
@@ -1904,7 +1904,8 @@ impl Error for InvalidHeaderNameBytes {
 // ===== HdrName =====
 
 impl<'a> HdrName<'a> {
-    fn custom(buf: &'a [u8], lower: bool) -> HdrName<'a> {
+    /// Make lint happy
+    pub fn custom(buf: &'a [u8], lower: bool) -> HdrName<'a> {
         HdrName {
             inner: Repr::Custom(MaybeLower {
                 buf: buf,
@@ -1913,6 +1914,7 @@ impl<'a> HdrName<'a> {
         }
     }
 
+    /// Make lint happy
     pub fn from_bytes<F, U>(hdr: &[u8], f: F) -> Result<U, InvalidHeaderName>
         where F: FnOnce(HdrName) -> U,
     {
@@ -1921,6 +1923,7 @@ impl<'a> HdrName<'a> {
         Ok(f(hdr))
     }
 
+    /// Make lint happy
     pub fn from_static<F, U>(hdr: &'static str, f: F) -> U
         where F: FnOnce(HdrName) -> U,
     {

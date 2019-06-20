@@ -1079,8 +1079,9 @@ impl<T> HeaderMap<T> {
         key.insert(self, val)
     }
 
+    /// For case-sensitive header
     #[inline]
-    fn insert2<K>(&mut self, key: K, value: T) -> Option<T>
+    pub fn insert2<K>(&mut self, key: K, value: T) -> Option<T>
         where K: Hash + Into<HeaderName>,
               HeaderName: PartialEq<K>,
     {

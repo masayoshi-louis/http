@@ -95,6 +95,7 @@ pub use self::map::{
 };
 pub use self::name::{
     HeaderName,
+    HdrName,
     InvalidHeaderName,
     InvalidHeaderNameBytes,
 };
